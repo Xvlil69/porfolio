@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahima SECK - Portfolio</title>
+    <meta name="description" content="Portfolio d'Ibrahima SECK - Cybersecurity Junior Analyst & Développeur Web">
+    <meta name="keywords" content="cybersecurity, développement web, Python, PHP, JavaScript, portfolio">
+    <meta name="author" content="Ibrahima SECK">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/">
+    <meta property="og:title" content="Ibrahima SECK - Portfolio">
+    <meta property="og:description" content="Cybersecurity Junior Analyst & Développeur Web">
+    <meta property="og:image" content="{{ url_for('static', filename='assets/avatar.jpg') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/">
+    <meta property="twitter:title" content="Ibrahima SECK - Portfolio">
+    <meta property="twitter:description" content="Cybersecurity Junior Analyst & Développeur Web">
+    <meta property="twitter:image" content="{{ url_for('static', filename='assets/avatar.jpg') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">IS</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="greeting">Bonjour, je suis</span>
+                        <span class="name">{{ data.personal_info.name }}</span>
+                    </h1>
+                    <p class="hero-subtitle">{{ data.personal_info.title }}</p>
+                    <p class="hero-description">
+                        Passionné par la cybersécurité et le développement web, je crée des solutions innovantes et sécurisées.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                        <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="avatar-container">
+                        <img src="{{ url_for('static', filename=data.personal_info.avatar) }}" alt="Ibrahima SECK" class="avatar">
+                        <div class="avatar-bg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">À propos de moi</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>{{ data.about.description }}</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">{{ data.projects|length }}+</span>
+                            <span class="stat-label">Projets réalisés</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">{{ data.certifications|length }}+</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">{{ data.languages|length }}+</span>
+                            <span class="stat-label">Langues</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="{{ url_for('static', filename=data.personal_info.avatar) }}" alt="Ibrahima SECK" class="about-avatar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mes Compétences</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-content">
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Cybersécurité
+                    </h3>
+                    <div class="skills-grid">
+                        {% for skill in data.skills.cybersecurity %}
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="skill-text">{{ skill }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Développement Web
+                    </h3>
+                    <div class="skills-grid">
+                        {% for skill in data.skills.web_development %}
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="skill-text">{{ skill }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mes Projets</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                {% for project in data.projects %}
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="{{ url_for('static', filename=project.image) }}" alt="{{ project.name }}">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">{{ project.name }}</h3>
+                        <p class="project-description">{{ project.description }}</p>
+                        <div class="project-technologies">
+                            {% for tech in project.technologies %}
+                            <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="certifications-grid">
+                {% for cert in data.certifications %}
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">{{ cert }}</h3>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Disponible pour toute opportunité</h3>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:{{ data.personal_info.email }}">{{ data.personal_info.email }}</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:{{ data.personal_info.phone }}">{{ data.personal_info.phone }}</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://{{ data.personal_info.linkedin }}" target="_blank">LinkedIn</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://{{ data.personal_info.github }}" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Sujet" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Votre message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Ibrahima SECK. Tous droits réservés.</p>
+                <div class="footer-links">
+                    <a href="#home">Accueil</a>
+                    <a href="#about">À propos</a>
+                    <a href="#projects">Projets</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
