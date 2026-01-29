@@ -15,7 +15,7 @@ portfolio_data = {
         "title": "Cybersecurity Junior Analyst | Développeur Web",
         "email": "hibouseck10@gmail.com",
         "phone": "+221 78 534 11 77",
-        "linkedin": "www.linkedin.com/in/ibrahima-seck-b1193a223",
+        "linkedin": "www.linkedin.com/in/ibrahima-seck-535888320",
         "github": "github.com/Xvlil69",
         "avatar": "avatar.jpg"
     },
