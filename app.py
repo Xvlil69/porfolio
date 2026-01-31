@@ -63,14 +63,13 @@ portfolio_data = {
         }
     ],
     "certifications": [
-        "Security Engineer — TryHackMe",
-        "Junior Penetration Tester — TryHackMe",
-        "SOC Analyst — TryHackMe",
-        "Ethical Hacker — Cisco Networking Academy",
-        "Introduction to Cybersecurity — Cisco Networking Academy",
         "Analyste Junior en Cybersécurité — ForceN",
-        "Digital Marketing Manager — ForceN",
-        "Développement mobile — ForceN"
+        "Certified C++ Practitioner (CCPP)",
+        "Security Engineer ", 
+        "SOC Analyst ",
+        "Ethical Hacker",
+        "Développement mobile ",
+        "Digital Marketing Manager",
     ],
     "languages": [
         {"name": "Français", "level": "Courant"},
