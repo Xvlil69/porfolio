@@ -16,7 +16,7 @@ Portfolio moderne, dynamique et responsive pour Ibrahima SECK - Cybersecurity Ju
 ### Backend
 - **Python 3.11+** : Langage principal
 - **Flask 2.3.3** : Framework web léger et flexible
-- **Jinja2** : Moteur de templates
+
 
 ### Frontend
 - **HTML5** : Structure sémantique
